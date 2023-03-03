@@ -1,0 +1,211 @@
+---
+title: "Shiny for Scientists"
+author: Andreas M. Brandmaier and Leonie Hagitte
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+date: "2023-02-22"
+---
+
+
+class: center, inverse
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+library(fontawesome)
+```
+
+.pull-left[
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Shiny for Scientists</h1>
+<h3>A hands-on workshop</h3>
+
+Andreas Brandmaier and Leonie Hagitte
+]
+.pull-right[
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/thumbs/shiny.png)
+]
+---
+
+# Required software
+
+You need to install these software packages in order to follow along with the examples of today:
+
+- **R**: https://cran.r-project.org
+- **RStudio**: https://rstudio.com/products/rstudio/download/
+- **tidyverse packages**: 
+
+```{r}
+install.packages(c("tidyverse", "ggraph"))
+```
+
+---
+
+# What to expect
+
+.pull-left[
+- This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
+- Introductory R coding skills are OK! We have exercises at varying levels of proficiency
+- The workshop materials remain open and accessible after the workshop
+- Feel free to team up!
+]
+
+.pull-right[
+![an image](images/undraw_Cooking_p7m1.png)
+]
+---
+
+# Goals
+
+class: center, inverse
+
+---
+# Structure of a shiny application
+
+Objectives of today:
+
+- Learn about the structure of a shiny application.
+
+- Learn how to create shiny apps from a template.
+
+- Learn how to think in terms of *inputs* and *outputs*.
+
+- Write your own app (using simulated data, real data or _your_ data)
+
+---
+
+# Content
+
+Let's talk about...
+
+- Reactivity
+- User-interface design
+- Awesome visualizations
+
+
+---
+
+# ui and server elements
+
+- The `ui` specifies the _visible_ user interface
+  - Dynamic elements *inputs* and *outputs*
+  - Static elements like headings, text, static images
+  - A layout how to arrange these things
+   
+- The `server` is _invisible_ and is responsible for all computations
+  - The `server` monitors reactive *inputs*
+  - When inputs change, *outputs* are updated
+  
+---
+
+# Reactivity
+
+The simplest structure of a reactive program involves just a source and an endpoint:
+
+![https://shiny.rstudio.com/images/reactivity_diagrams/simplest.png]
+
+---
+
+# More reactivity
+
+![https://shiny.rstudio.com/images/reactivity_diagrams/faithful.png]
+
+---
+
+# Outputs and Renderers
+
+Example outputs:
+
+- `textOutput()`
+
+- `plotOutput()`
+
+- `tableOutput()`
+
+You can use
+
+```{r, echo = TRUE}
+help.search("Output", package = "shiny")
+```
+
+to find other output functions in shiny.
+
+---
+
+# Outputs and Renderers
+
+Each `*Output()` function has a corresponding `render*()` function. For example:
+
+- `textOutput()` $\rightarrow$ `renderText()`
+- `plotOutput()` $\rightarrow$ `renderPlot()`
+- `tableOutput()` $\rightarrow$ `renderTable()`
+---
+
+# Accessing inputs
+
+- Inputs are accessed in the *server* function via the *input* argument.
+
+- Inputs are *reactive*, meaning that changes trigger updates.
+---
+# Anatomy
+
+```{}
+ui <- fluidPage(
+    
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+    
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+*            sliderInput("bins", ...
+        ),
+        
+        
+        mainPanel(
+*           plotOutput("distPlot")
+        )
+    )
+)
+```
+---
+# Demonstration
+
+Code example: XXX
+---
+# Challenges
+---
+# Challenge 1
+
+Goal: XXX
+---
+# Challenge 2
+
+Starting point: xxx.Rmd
+
+Goals:
+- add functionality to display XXX
+---
+# Advanced Topics
+
+---
+
+## Shiny themes
+
+Shiny uses bootstrap ( https://getbootstrap.com/ ) to display web content
+
+To use other bootstrap themes, install the `shinythemes` package and use the `theme` argument to your page layout function.
+
+```{r eval=FALSE}
+install.packages("shinythemes")
+```
+
+More information here: https://rstudio.github.io/shinythemes/
+---
