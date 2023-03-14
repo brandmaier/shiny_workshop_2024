@@ -34,6 +34,12 @@ Andreas Brandmaier and Leonie Hagitte
 ]
 ---
 
+# Ask questions anytime
+
+![an image](images/undraw_Lives_matter_38lv.png)
+
+---
+
 # Required software
 
 You need to install these software packages in order to follow along with the examples of today:
@@ -178,20 +184,30 @@ ui <- fluidPage(
 ---
 # Demonstration
 
-Code example: XXX
+Code example: XXX (TODO: Leonie, Andreas?)
 ---
 # Challenges
+
 ---
+
 # Challenge 1
 
-Goal: XXX
+Goal: XXX (TODO: Leonie?!)
+
 ---
 # Challenge 2
 
-Starting point: xxx.Rmd
+Starting point: challenges/02-graph/app.Rmd
 
-Goals:
-- add functionality to display XXX
+About the App:
+- This app displays a social network graph
+
+Overall Goals:
+- Add functionality to change the visualization
+
+Specific Goals:
+- Nodes should be colorable by gender (nodes are persons)
+- More than two graph layouts should be displayable
 ---
 # Advanced Topics
 
