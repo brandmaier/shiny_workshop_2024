@@ -115,13 +115,13 @@ Let's talk about...
 
 The simplest structure of a reactive program involves just a source and an endpoint:
 
-![https://shiny.rstudio.com/images/reactivity_diagrams/simplest.png]
+![](https://shiny.rstudio.com/images/reactivity_diagrams/simplest.png)
 
 ---
 
 # More reactivity
 
-![https://shiny.rstudio.com/images/reactivity_diagrams/faithful.png]
+![](https://shiny.rstudio.com/images/reactivity_diagrams/faithful.png)
 
 ---
 
@@ -160,8 +160,47 @@ Each `*Output()` function has a corresponding `render*()` function. For example:
 
 - Inputs are *reactive*, meaning that changes trigger updates.
 ---
+
+# Input example
+
+
+
+
+---
+
+# Interactive Widgets Overview
+
+<a href="https://shiny.rstudio.com/gallery/widget-gallery.html">Widget Gallery</a>
+
+![](images/s)
+
+---
+
+# Anatomy
+Layout elements
+```{}
+ui <- fluidPage(
+    
+    # Application title
+*    titlePanel("Old Faithful Geyser Data"),
+    
+    # Sidebar with a slider input for number of bins 
+*    sidebarLayout(
+*        sidebarPanel(
+            sliderInput("bins", ...
+        ),
+        
+        
+*        mainPanel(
+           plotOutput("distPlot")
+        )
+    )
+)
+```
+---
 # Anatomy
 
+Inputs and Outputs
 ```{}
 ui <- fluidPage(
     
@@ -188,11 +227,13 @@ Code example: XXX (TODO: Leonie, Andreas?)
 ---
 # Challenges
 
+![](images/undraw_Engineering_team_a7n2.png)
+
 ---
 
 # Challenge 1
 
-Goal: XXX (TODO: Leonie?!)
+Goal: A pocket calculator 
 
 ---
 # Challenge 2

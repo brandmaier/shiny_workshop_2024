@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Shiny for Scientists</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andreas M. Brandmaier and Leonie Hagitte" />
+    <meta name="date" content="2023-02-22" />
+    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: center, inverse
+
+
+
+.pull-left[
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h1&gt;Shiny for Scientists&lt;/h1&gt;
+&lt;h3&gt;A hands-on workshop&lt;/h3&gt;
+
+Andreas Brandmaier and Leonie Hagitte
+]
+.pull-right[
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/thumbs/shiny.png)
+]
+---
+
+# Ask questions anytime
+
+![an image](images/undraw_Lives_matter_38lv.png)
+
+---
+
+# Required software
+
+You need to install these software packages in order to follow along with the examples of today:
+
+- **R**: https://cran.r-project.org
+- **RStudio**: https://rstudio.com/products/rstudio/download/
+- **tidyverse packages**: 
+
+
+```r
+install.packages(c("tidyverse", "ggraph"))
+```
+
+---
+
+# What to expect
+
+.pull-left[
+- This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
+- Introductory R coding skills are OK! We have exercises at varying levels of proficiency
+- The workshop materials remain open and accessible after the workshop
+- Feel free to team up!
+]
+
+.pull-right[
+![an image](images/undraw_Cooking_p7m1.png)
+]
+---
+
+# Goals
+
+class: center, inverse
+
+---
+# Structure of a shiny application
+
+Objectives of today:
+
+- Learn about the structure of a shiny application.
+
+- Learn how to create shiny apps from a template.
+
+- Learn how to think in terms of *inputs* and *outputs*.
+
+- Write your own app (using simulated data, real data or _your_ data)
+
+---
+
+# Content
+
+Let's talk about...
+
+- Reactivity
+- User-interface design
+- Awesome visualizations
+
+
+---
+
+# ui and server elements
+
+- The `ui` specifies the _visible_ user interface
+  - Dynamic elements *inputs* and *outputs*
+  - Static elements like headings, text, static images
+  - A layout how to arrange these things
+   
+- The `server` is _invisible_ and is responsible for all computations
+  - The `server` monitors reactive *inputs*
+  - When inputs change, *outputs* are updated
+  
+---
+
+# Reactivity
+
+The simplest structure of a reactive program involves just a source and an endpoint:
+
+![](https://shiny.rstudio.com/images/reactivity_diagrams/simplest.png)
+
+---
+
+# More reactivity
+
+![](https://shiny.rstudio.com/images/reactivity_diagrams/faithful.png)
+
+---
+
+# Outputs and Renderers
+
+Example outputs:
+
+- `textOutput()`
+
+- `plotOutput()`
+
+- `tableOutput()`
+
+You can use
+
+
+```r
+help.search("Output", package = "shiny")
+```
+
+to find other output functions in shiny.
+
+---
+
+# Outputs and Renderers
+
+Each `*Output()` function has a corresponding `render*()` function. For example:
+
+- `textOutput()` `\(\rightarrow\)` `renderText()`
+- `plotOutput()` `\(\rightarrow\)` `renderPlot()`
+- `tableOutput()` `\(\rightarrow\)` `renderTable()`
+---
+
+# Accessing inputs
+
+- Inputs are accessed in the *server* function via the *input* argument.
+
+- Inputs are *reactive*, meaning that changes trigger updates.
+---
+
+# Inputs ("Widgets")
+
+
+---
+
+# Interactive Widgets Overview
+
+&lt;iframe src="https://shiny.rstudio.com/gallery/widget-gallery.html"&gt;&lt;/iframe&gt;
+
+---
+
+# Anatomy
+
+```{}
+ui &lt;- fluidPage(
+    
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+    
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+*            sliderInput("bins", ...
+        ),
+        
+        
+        mainPanel(
+*           plotOutput("distPlot")
+        )
+    )
+)
+```
+---
+# Demonstration
+
+Code example: XXX (TODO: Leonie, Andreas?)
+---
+# Challenges
+
+---
+
+# Challenge 1
+
+Goal: XXX (TODO: Leonie?!)
+
+---
+# Challenge 2
+
+Starting point: challenges/02-graph/app.Rmd
+
+About the App:
+- This app displays a social network graph
+
+Overall Goals:
+- Add functionality to change the visualization
+
+Specific Goals:
+- Nodes should be colorable by gender (nodes are persons)
+- More than two graph layouts should be displayable
+---
+# Advanced Topics
+
+---
+
+## Shiny themes
+
+Shiny uses bootstrap ( https://getbootstrap.com/ ) to display web content
+
+To use other bootstrap themes, install the `shinythemes` package and use the `theme` argument to your page layout function.
+
+
+```r
+install.packages("shinythemes")
+```
+
+More information here: https://rstudio.github.io/shinythemes/
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
