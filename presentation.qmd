@@ -1,0 +1,355 @@
+---
+title: "An Introduction to Shiny"
+subtitle: "Hands-on workshop"
+author: Andreas M. Brandmaier and Leonie Hagitte
+format: 
+  revealjs:
+    theme: simple #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
+    revealjs-plugins:
+    - countdown
+editor: visual
+date: "July 2023"
+---
+
+# Welcome
+
+## Ask questions anytime
+
+![](images/undraw_Engineering_team_a7n2.png)
+
+## This is us
+
+Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
+
+Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b8231/ "LinkedIn"))
+
+## Shiny
+
+> Shiny is an R package that makes it easy to build interactive web apps in R
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Apps can be 
+
+-standalone, 
+- deployed to a website, 
+- or be part of an interactive (Markdown) document
+:::
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/thumbs/shiny.png)
+:::
+
+::::
+
+## Required software
+
+You need to install these software packages in order to follow along with the examples of today:
+
+-   **R**: https://cran.r-project.org
+-   **RStudio**: https://rstudio.com/products/rstudio/download/
+-   **shiny**
+-   **tidyverse packages** (and some others)
+
+```{r eval=FALSE, echo=TRUE}
+install.packages(c("shiny","tidyverse", "ggraph","palmerpenguins"))
+```
+
+# Goals
+
+# Objectives of today
+
+::: incremental
+-   Learn about the structure of a shiny application.
+
+-   Learn how to create shiny apps from a template.
+
+-   Learn how to think in terms of *inputs* and *outputs*.
+
+-   Write your own app (using simulated data, real data or *your* data)
+:::
+
+## Content
+
+Let's talk about...
+
+::: incremental
+-   User-interface / Layout
+-   Reactivity / Logic
+-   Awesome visualizations
+:::
+
+## Anatomy of a Shiny app
+
+```{r shiny-anatomy}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|1|3,6|4"
+library(shiny)
+
+shinyApp(
+  ui = list(),
+  server = function(input, output, session) {  }
+)
+shinyApp(ui, server)
+```
+
+The `ui` specifies the *visible* user interface 
+
+- Dynamic elements *inputs* and *outputs* 
+- Static elements like headings, text, static images 
+- A layout how to arrange these things
+
+## Anatomy of a Shiny app
+
+```{r shiny-anatomy-cont}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "5|7"
+library(shiny)
+
+shinyApp(
+  ui = list(),
+  server = function(input, output, session) {  }
+)
+shinyApp(ui, server)
+```
+
+The `server` is *invisible* and is responsible for all computations 
+
+- The `server` monitors *inputs* 
+- When inputs change, *outputs* are updated (*reactivity*)
+
+# User-interface
+
+## Shiny Widgets Gallery
+
+::: {style="text-align: center"}
+[shiny.rstudio.com/gallery/widget-gallery.html](https://shiny.rstudio.com/gallery/widget-gallery.html)
+:::
+
+<iframe data-src="https://shiny.rstudio.com/gallery/widget-gallery.html" width="100%" height="500px" style="border:1px solid;border-radius: 5px;">
+
+</iframe>
+
+# Example
+
+Inputs have unique ids that correspond to server-side variables, a label, a
+starting value and extra options (e.g., range restrictions, etc.)
+
+`textInput(inputId="familyname", label="Family name:",  value="Steve Miller"  )`
+
+or
+
+`numericInput(inputId="age", label="Age (in years):",  value=1, min=0, max=150 )`
+
+On the server, we will be able to access variables  `input$familyname` and `input$age`
+
+# Layout
+
+## Sidebar layout
+
+![](images/sidebar.png){fig-align="center" width="75%"}
+
+::: aside
+From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#page-with-sidebar)
+:::
+
+## Multi-row layout
+
+![](images/multirow.png){fig-align="center" width="75%"}
+
+::: aside
+From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
+:::
+
+## Other layouts
+
+Many more, e.g. Tabsets - see `tabsetPanel()`
+
+![](images/tabset.png){fig-align="center" width="75%"}
+
+::: aside
+From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
+:::
+
+# Outputs
+
+Example output elements (placeholders for dynamic content):
+
+-   `textOutput()`
+
+-   `plotOutput()`
+
+-   `tableOutput()`
+
+You can use
+
+```{r, echo = TRUE}
+help.search("Output", package = "shiny")
+```
+
+to find other output functions in shiny.
+
+# Outputs and Renderers
+
+Each `*Output()` function has a corresponding `render*()` server-side function. For example:
+
+-   `textOutput()` $\rightarrow$ `renderText()`
+-   `plotOutput()` $\rightarrow$ `renderPlot()`
+-   `tableOutput()` $\rightarrow$ `renderTable()`
+
+# Server logic: Accessing inputs
+
+```{r shiny-anatomy-cont-repeat}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "3"
+shinyApp(
+  ui = list(),
+  server = function(input, output, session) {  }
+)
+```
+
+-   Inputs are accessed in the *server* function via the *input* argument.
+
+-   Inputs are *reactive*, meaning that changes trigger updates to outputs.
+
+# Example: A pocket calculator
+
+## Demo 1 - Plus One
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo1.R`
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|1-3|5-27|6-17|18-26"
+#| file: "demos/demo1.R"
+```
+
+## Reactivity
+
+The simplest structure of a reactive program involves just a source and an endpoint:
+
+```{mermaid}
+flowchart LR
+  subgraph outputs
+  re([result])
+  end
+  subgraph inputs
+  n1([number]) 
+  end
+  n1 --> re
+```
+
+## Your turn - Exercise 1
+
+Copy the code from the previous slide (or open `exercises/ex1.R`) and run it in R
+
+Check that you are able successfully run the shiny app and are able to interact with it.
+
+-   If everything is working try modifying the code (e.g. try adding a second number input and change the logic so that both numbers are added).
+
+<countdown time="300"/>
+
+# Reactive diagram
+
+```{mermaid}
+flowchart LR
+  subgraph outputs
+  re([result])
+  end
+  subgraph inputs
+  n1([number1]) 
+  n2([number2]) 
+  end
+  n1 --> re
+  n2 --> re
+```
+
+# Your Turn - Exercise 2
+
+-   Continue with your code (or from XXX.R) and add a menu to choose different operators (e.g., plus, minus)
+
+-   For example, add a `selectInput(inputId, label, choices)`
+
+-   Add server-side logic to implement the different operators
+
+# Reactive diagram
+
+```{mermaid}
+flowchart LR
+  subgraph outputs
+  re([result])
+  end
+  subgraph inputs
+  n1([number1]) 
+  n2([number2]) 
+  op([operator])
+  end
+  n1 --> re
+  n2 --> re
+  operator --> re
+```
+
+# Who doesn't like penguins?
+
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png)
+
+Artwork by \@allison_horst
+
+# Palmer Penguins
+
+We are going to use the `penguins` dataset from `palmerpenguins`
+
+```{r}
+library(palmerpenguins)
+
+knitr::kable(head(penguins))
+```
+
+## Reactive expression
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo2.R`
+:::
+
+::: code-half
+```{r}
+#| eval: false
+#| code-line-numbers: "|19-21|29-33|35-37|39-41"
+#| file: "demos/demo2.R"
+```
+:::
+
+# Reactive diagram
+
+```{mermaid}
+flowchart LR
+  subgraph outputs
+  pl1([plot1])
+  pl2([plot2])
+  tx1([text1])
+  end
+  subgraph inputs
+  slider1([slider1]) 
+  n1([number1]) 
+  rn1([range1])
+  ck1([ck1])
+  end
+
+```
+
+# Your Turn - Exercise 3
+
+Copy the code from the previous slide (or open `exercises/XXX.R`) and run it in R
+
+Add logic to create a second plot as output `plot2` on the server
+
+Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years
+
+<countdown time="1200"/>
