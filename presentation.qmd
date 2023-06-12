@@ -56,6 +56,25 @@ You need to install these software packages in order to follow along with the ex
 install.packages(c("shiny","tidyverse", "ggraph","palmerpenguins"))
 ```
 
+# What to expect
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
+- Introductory R coding skills are OK! We have exercises at varying levels of proficiency
+- The workshop materials remain open and accessible after the workshop
+- Feel free to team up!
+]
+:::
+
+::: {.column width="30%"}
+![an image](images/undraw_Cooking_p7m1.png)
+:::
+
+::::
+---
+
 # Goals
 
 # Objectives of today
@@ -133,7 +152,7 @@ The `server` is *invisible* and is responsible for all computations
 
 </iframe>
 
-# Example
+## Example
 
 Inputs have unique ids that correspond to server-side variables, a label, a
 starting value and extra options (e.g., range restrictions, etc.)
@@ -174,7 +193,7 @@ Many more, e.g. Tabsets - see `tabsetPanel()`
 From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
 :::
 
-# Outputs
+## Outputs
 
 Example output elements (placeholders for dynamic content):
 
@@ -192,7 +211,7 @@ help.search("Output", package = "shiny")
 
 to find other output functions in shiny.
 
-# Outputs and Renderers
+## Outputs and Renderers
 
 Each `*Output()` function has a corresponding `render*()` server-side function. For example:
 
@@ -200,7 +219,7 @@ Each `*Output()` function has a corresponding `render*()` server-side function. 
 -   `plotOutput()` $\rightarrow$ `renderPlot()`
 -   `tableOutput()` $\rightarrow$ `renderTable()`
 
-# Server logic: Accessing inputs
+## Server logic: Accessing inputs
 
 ```{r shiny-anatomy-cont-repeat}
 #| eval: false
@@ -220,18 +239,7 @@ shinyApp(
 
 ## Demo 1 - Plus One
 
-::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo1.R`
-:::
-
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "|1-3|5-27|6-17|18-26"
-#| file: "demos/demo1.R"
-```
-
-## Reactivity
+Demo: We write a simple calculator that adds +1 to a number we enter.
 
 The simplest structure of a reactive program involves just a source and an endpoint:
 
@@ -246,6 +254,21 @@ flowchart LR
   n1 --> re
 ```
 
+## Demo 1 - Plus One
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo1.R`
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
+#| file: "demos/demo1.R"
+```
+
+
+
 ## Your turn - Exercise 1
 
 Copy the code from the previous slide (or open `exercises/ex1.R`) and run it in R
@@ -256,7 +279,9 @@ Check that you are able successfully run the shiny app and are able to interact 
 
 <countdown time="300"/>
 
-# Reactive diagram
+## Reactive diagram
+
+The reactive diagram of this solution shows two inputs and one output:
 
 ```{mermaid}
 flowchart LR
@@ -271,7 +296,11 @@ flowchart LR
   n2 --> re
 ```
 
-# Your Turn - Exercise 2
+## Solution
+
+TODO XXX
+
+## Your Turn - Exercise 2
 
 -   Continue with your code (or from XXX.R) and add a menu to choose different operators (e.g., plus, minus)
 
@@ -279,7 +308,7 @@ flowchart LR
 
 -   Add server-side logic to implement the different operators
 
-# Reactive diagram
+## Reactive diagram
 
 ```{mermaid}
 flowchart LR
@@ -296,13 +325,28 @@ flowchart LR
   operator --> re
 ```
 
+## Solution
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `challenges/01-calculator/app-solution.R`
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|21-25|38-43"
+#| file: "challenges/01-calculator/app-solution.R"
+```
+
 # Who doesn't like penguins?
 
 ![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png)
 
+::: aside
 Artwork by \@allison_horst
+:::
 
-# Palmer Penguins
+## Palmer Penguins
 
 We are going to use the `penguins` dataset from `palmerpenguins`
 
@@ -321,12 +365,13 @@ knitr::kable(head(penguins))
 ::: code-half
 ```{r}
 #| eval: false
-#| code-line-numbers: "|19-21|29-33|35-37|39-41"
+#| echo: true
+#| code-line-numbers: "|9|12-15|18-22|27-42|29-33|35-37|39-41"
 #| file: "demos/demo2.R"
 ```
 :::
 
-# Reactive diagram
+## Reactive diagram
 
 ```{mermaid}
 flowchart LR
@@ -344,12 +389,43 @@ flowchart LR
 
 ```
 
-# Your Turn - Exercise 3
+## Your Turn - Exercise 3
 
 Copy the code from the previous slide (or open `exercises/XXX.R`) and run it in R
 
 Add logic to create a second plot as output `plot2` on the server
 
-Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years
+Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size
+adjustable by a given variable (`selectInput` or a `checkboxInput`).
 
 <countdown time="1200"/>
+
+
+## DRY - Don't repeat yourself
+
+Assume a range input (`sliderInput(value=c(0,10))`) that filters data
+
+Filter logic should be executed only once for every relevant output
+
+Never copy&paste server logic, instead use a `reactive` element (here: `compute`):
+
+```{mermaid}
+flowchart LR
+  subgraph outputs
+  pl1([plot1])
+  pl2([plot2])
+  tx1([text1])
+  end
+  comp([compute])
+  subgraph inputs
+  slider1([slider1]) 
+  n1([number1]) 
+  rn1([range1])
+  ck1([ck1])
+  end
+  compute --> pl1
+  compute --> pl2
+  rn1 --> compute
+  n1 --> pl1
+
+```
