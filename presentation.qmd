@@ -29,21 +29,17 @@ Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b82
 
 > Shiny is an R package that makes it easy to build interactive web apps in R
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
-Apps can be 
+Apps can be
 
--standalone, 
-- deployed to a website, 
-- or be part of an interactive (Markdown) document
+-standalone, - deployed to a website, - or be part of an interactive (Markdown) document
 :::
 
 ::: {.column width="40%"}
 ![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/thumbs/shiny.png)
 :::
-
-::::
+:::
 
 ## Required software
 
@@ -60,22 +56,20 @@ install.packages(c("shiny","tidyverse", "ggraph","palmerpenguins"))
 
 # What to expect
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
-- This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
-- Introductory R coding skills are OK! We have exercises at varying levels of proficiency
-- The workshop materials remain open and accessible after the workshop
-- Feel free to team up!
-]
+-   This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
+-   Introductory R coding skills are OK! We have exercises at varying levels of proficiency
+-   The workshop materials remain open and accessible after the workshop
+-   Feel free to team up! \]
 :::
 
 ::: {.column width="30%"}
 ![an image](images/undraw_Cooking_p7m1.png)
 :::
+:::
 
-::::
----
+------------------------------------------------------------------------
 
 # Goals
 
@@ -116,11 +110,11 @@ shinyApp(
 shinyApp(ui, server)
 ```
 
-The `ui` specifies the *visible* user interface 
+The `ui` specifies the *visible* user interface
 
-- Dynamic elements *inputs* and *outputs* 
-- Static elements like headings, text, static images 
-- A layout how to arrange these things
+-   Dynamic elements *inputs* and *outputs*
+-   Static elements like headings, text, static images
+-   A layout how to arrange these things
 
 ## Anatomy of a Shiny app
 
@@ -137,10 +131,10 @@ shinyApp(
 shinyApp(ui, server)
 ```
 
-The `server` is *invisible* and is responsible for all computations 
+The `server` is *invisible* and is responsible for all computations
 
-- The `server` monitors *inputs* 
-- When inputs change, *outputs* are updated (*reactivity*)
+-   The `server` monitors *inputs*
+-   When inputs change, *outputs* are updated (*reactivity*)
 
 # User-interface
 
@@ -156,8 +150,7 @@ The `server` is *invisible* and is responsible for all computations
 
 ## Example
 
-Inputs have unique ids that correspond to server-side variables, a label, a
-starting value and extra options (e.g., range restrictions, etc.)
+Inputs have unique ids that correspond to server-side variables, a label, a starting value and extra options (e.g., range restrictions, etc.)
 
 `textInput(inputId="familyname", label="Family name:",  value="Steve Miller"  )`
 
@@ -165,7 +158,7 @@ or
 
 `numericInput(inputId="age", label="Age (in years):",  value=1, min=0, max=150 )`
 
-On the server, we will be able to access variables  `input$familyname` and `input$age`
+On the server, we will be able to access variables `input$familyname` and `input$age`
 
 # Layout
 
@@ -268,8 +261,6 @@ flowchart LR
 #| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
 #| file: "demos/demo1.R"
 ```
-
-
 
 ## Your turn - Exercise 1
 
@@ -397,11 +388,9 @@ Copy the code from the previous slide (or open `exercises/XXX.R`) and run it in 
 
 Add logic to create a second plot as output `plot2` on the server
 
-Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size
-adjustable by a given variable (`selectInput` or a `checkboxInput`).
+Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size adjustable by a given variable (`selectInput` or a `checkboxInput`).
 
 <countdown time="1200"/>
-
 
 ## DRY - Don't repeat yourself
 
@@ -432,6 +421,16 @@ flowchart LR
 
 ```
 
+## Reactives
+
+Their primary use is similar to a function in an R script, they help to
+
+-   avoid repeating yourself
+
+-   decompose complex computations into smaller / more modular steps
+
+-   can improve computational efficiency by breaking up / simplifying reactive dependencies
+
 ## DRY - Solution
 
 ::: {.code-file .sourceCode .cell-code}
@@ -449,10 +448,33 @@ flowchart LR
 
 ## Deployment
 
-- Free online deployment at https://www.shinyapps.io/ after registration
-- Free account limited (e.g., 25h operating hours, 5 apps; more plans available)
-- Sharing your app for others to run it locally (e.g., via OSF)
-- Reproducibility! Make sure that everything is contained, no absolute file paths were used (see `here` package) and that all dependencies are loaded
+-   Free online deployment at https://www.shinyapps.io/ after registration
+-   Free account limited (e.g., 25h operating hours, 5 apps; more plans available)
+-   Sharing your app for others to run it locally (e.g., via OSF)
+-   Reproducibility! Make sure that everything is contained, no absolute file paths were used (see `here` package) and that all dependencies are loaded
+
+## Dashboards
+
+Package `shinydashboard` has some nice GUI elements for dashboards:
+
+![](images/shinydashboard_box.png)
+
+![](images/shinydashboard_valuebox.png)
+
+## Demo Dashboard
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo7.R`
+:::
+
+::: code-half
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|"
+#| file: "demos/demo7.R"
+```
+:::
 
 ## Inspiration
 
@@ -460,12 +482,10 @@ flowchart LR
 [shiny.rstudio.com/gallery/](https://shiny.rstudio.com/gallery/)
 :::
 
-> The Shiny User Showcase is comprised of contributions from the Shiny app developer community. 
+> The Shiny User Showcase is comprised of contributions from the Shiny app developer community.
 
 ## Thanks
 
-This work is provided under [https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
+This work is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
 
-Some materials are based on work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under
-[https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
-
+Some materials are based on work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
