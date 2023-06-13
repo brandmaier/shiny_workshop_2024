@@ -1,24 +1,9 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(tidyverse)
 library(ggraph)
 library(tidygraph)
 
-set.seed(39548)
-graph <- play_erdos_renyi(n = 10, p = 0.2) %>% 
-  activate(nodes) %>% 
-  mutate(class = sample(letters[1:4], n(), replace = TRUE)) %>% 
-  activate(edges) %>% 
-  arrange(.N()$class[from]) %>%
-  mutate(class = sample(letters[1:2], n(), replace = TRUE))
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -40,7 +25,8 @@ ui <- fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-           plotOutput("distPlot")
+           plotOutput("graphPlot"),
+           textOutput("description")
         )
     )
 )
@@ -48,14 +34,24 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
-    output$distPlot <- renderPlot({
+  graph <- reactive({
+    
+    set.seed(39548)
+    
+    play_erdos_renyi(n = 10, p = 0.2) %>% 
+      activate(nodes) %>% 
+      mutate(class = sample(letters[1:4], n(), replace = TRUE)) %>% 
+      activate(edges) %>% 
+      arrange(.N()$class[from]) %>%
+      mutate(class = sample(letters[1:2], n(), replace = TRUE))
+  })
+  
+    output$graphPlot <- renderPlot({
        
-      
-      ggraph(graph, layout = "dendrogram") + 
+      ggraph(graph(), layout = "dendrogram") + 
         geom_edge_link() + 
         geom_node_circle(aes(r=input$radius/100.0),fill="black")+
         ggraph::theme_graph()
-#        coord_polar()
       
     })
 }

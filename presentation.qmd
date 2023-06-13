@@ -1,10 +1,12 @@
 ---
 title: "An Introduction to Shiny"
-subtitle: "Hands-on workshop"
+subtitle: "A hands-on workshop"
 author: Andreas M. Brandmaier and Leonie Hagitte
 format: 
   revealjs:
-    theme: simple #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
+    theme: [simple, style.css] #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
+    footer: "6th ESLR Workshop, 2023: Social Learning in Complex Systems"
+    highlight-style: a11y
     revealjs-plugins:
     - countdown
 editor: visual
@@ -429,3 +431,41 @@ flowchart LR
   n1 --> pl1
 
 ```
+
+## DRY - Solution
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo2.R`
+:::
+
+::: code-half
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|"
+#| file: "demos/demo3.R"
+```
+:::
+
+## Deployment
+
+- Free online deployment at https://www.shinyapps.io/ after registration
+- Free account limited (e.g., 25h operating hours, 5 apps; more plans available)
+- Sharing your app for others to run it locally (e.g., via OSF)
+- Reproducibility! Make sure that everything is contained, no absolute file paths were used (see `here` package) and that all dependencies are loaded
+
+## Inspiration
+
+::: {.large style="text-align: center"}
+[shiny.rstudio.com/gallery/](https://shiny.rstudio.com/gallery/)
+:::
+
+> The Shiny User Showcase is comprised of contributions from the Shiny app developer community. 
+
+## Thanks
+
+This work is provided under [https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
+
+Some materials are based on work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under
+[https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
+
