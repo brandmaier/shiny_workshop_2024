@@ -19,11 +19,6 @@ date: "July 2023"
 
 ![](images/undraw_Engineering_team_a7n2.png)
 
-## This is us
-
-Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
-
-Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b8231/ "LinkedIn"))
 
 ## Shiny
 
@@ -194,7 +189,7 @@ From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
 
 Example output elements (placeholders for dynamic content):
 
--   `textOutput()`
+-   `textOutput()` or `htmlOutput()`
 
 -   `plotOutput()`
 
@@ -266,7 +261,7 @@ flowchart LR
 
 ## Your turn - Exercise 1
 
-Copy the code from the previous slide (or open `exercises/ex1.R`) and run it in R
+Copy the code from the previous slide (or open `demo/demo1.R`) and run it in R
 
 Check that you are able successfully run the shiny app and are able to interact with it.
 
@@ -293,7 +288,16 @@ flowchart LR
 
 ## Solution
 
-TODO XXX
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `R/solution1.R`
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
+#| file: "R/solution1.R"
+```
 
 ## Your Turn - Exercise 2
 
@@ -323,14 +327,30 @@ flowchart LR
 ## Solution
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `challenges/01-calculator/app-solution.R`
+`r fontawesome::fa("file")` `R/solution2.R`
 :::
 
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "|21-25|38-43"
-#| file: "challenges/01-calculator/app-solution.R"
+#| code-line-numbers: "|12-16|29-36"
+#| file: "R/solution2.R"
+```
+
+## Formatting text
+
+We can use HTML elements to style text. E.g., <b>Bold</b> or <i>Italics</i>,<h1>First-level heading</h> <h2>Second-level heading</h2>, ...
+
+In UI as static or dynamic elements:
+
+```{r eval=FALSE}
+    h2("Title"),
+    htmlOutput(outputId = "result")
+```
+
+On the server:
+```{r eval=FALSE}
+output$result <- renderText({ "<h2>Headline</h2>" })
 ```
 
 # Who doesn't like penguins?
@@ -488,6 +508,10 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 
 ## Thanks
 
-This work is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
+To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop. This work is published from: Deutschland.
 
 Some materials are based on work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
+
+Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
+
+Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b8231/ "LinkedIn"))

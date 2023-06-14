@@ -55,7 +55,7 @@ server <- function(input, output) {
     })
     
     output$text1 <- renderText({
-      paste0("There are ",nrow(penguins_filtered()), " penguins in the data set")
+      paste0("<b>There</b> are ",nrow(penguins_filtered()), " penguins in the data set")
     })
 }
 
