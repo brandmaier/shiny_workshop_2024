@@ -1,0 +1,13 @@
+/*-- scss:defaults --*/
+.reveal countdown {
+  position: fixed;
+  bottom: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  border: 2px solid;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  user-select: none;
+}

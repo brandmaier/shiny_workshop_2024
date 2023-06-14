@@ -33,7 +33,9 @@ Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b82
 ::: {.column width="60%"}
 Apps can be
 
--standalone, - deployed to a website, - or be part of an interactive (Markdown) document
+-standalone, 
+- deployed to a website, 
+- or be part of an interactive (Markdown) document
 :::
 
 ::: {.column width="40%"}
@@ -315,7 +317,7 @@ flowchart LR
   end
   n1 --> re
   n2 --> re
-  operator --> re
+  op --> re
 ```
 
 ## Solution
