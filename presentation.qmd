@@ -28,7 +28,7 @@ date: "July 2023"
 ::: {.column width="60%"}
 Apps can be
 
--standalone, 
+- standalone, 
 - deployed to a website, 
 - or be part of an interactive (Markdown) document
 :::
@@ -43,34 +43,34 @@ Apps can be
 You need to install these software packages in order to follow along with the examples of today:
 
 -   **R**: https://cran.r-project.org
--   **RStudio**: https://rstudio.com/products/rstudio/download/
+-   **RStudio**: https://posit.co/download/rstudio-desktop/
 -   **shiny**
 -   **tidyverse packages** (and some others)
 
 ```{r eval=FALSE, echo=TRUE}
-install.packages(c("shiny","tidyverse", "ggraph","palmerpenguins"))
+install.packages(c("shiny","tidyverse", "shinydashboard","palmerpenguins"))
 ```
 
-# What to expect
+## What to expect
 
 ::: columns
 ::: {.column width="60%"}
+::: {.r-fit-text}
 -   This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
 -   Introductory R coding skills are OK! We have exercises at varying levels of proficiency
 -   The workshop materials remain open and accessible after the workshop
--   Feel free to team up! \]
+-   Feel free to team up!
+:::
 :::
 
 ::: {.column width="30%"}
-![an image](images/undraw_Cooking_p7m1.png)
+![](images/undraw_Cooking_p7m1.png)
 :::
 :::
-
-------------------------------------------------------------------------
 
 # Goals
 
-# Objectives of today
+## Objectives of today
 
 ::: incremental
 -   Learn about the structure of a shiny application.
@@ -190,9 +190,7 @@ From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
 Example output elements (placeholders for dynamic content):
 
 -   `textOutput()` or `htmlOutput()`
-
 -   `plotOutput()`
-
 -   `tableOutput()`
 
 You can use
@@ -249,19 +247,39 @@ flowchart LR
 ## Demo 1 - Plus One
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo1.R`
+`r fontawesome::fa("file")` `R/demo1.R`
 :::
 
 ```{r}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
-#| file: "demos/demo1.R"
+#| file: "R/demo1.R"
 ```
+
+## Seeking AI help
+
+::: columns
+::: {.column width="60%"}
+
+Large language models are great companions for programming
+
+Here is a ChatGPT link (requires Microsoft or Google account) to
+answer your questions (but please ask us as well any time)
+
+[ChatGPT companion for Shiny](https://chat.openai.com/share/53d04b51-fae0-481a-8eca-02469a84de4d
+)
+
+:::
+::: {.column width="40%"}
+
+![](images/chatgpt-screenshot.png)
+:::
+:::
 
 ## Your turn - Exercise 1
 
-Copy the code from the previous slide (or open `demo/demo1.R`) and run it in R
+Copy the code from the previous slide (or open `R/demo1.R`) and run it in R
 
 Check that you are able successfully run the shiny app and are able to interact with it.
 
@@ -289,19 +307,19 @@ flowchart LR
 ## Solution
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `R/solution1.R`
+`r fontawesome::fa("file")` `R/solution1_1.R`
 :::
 
 ```{r}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
-#| file: "R/solution1.R"
+#| file: "R/solution1_1.R"
 ```
 
 ## Your Turn - Exercise 2
 
--   Continue with your code (or from XXX.R) and add a menu to choose different operators (e.g., plus, minus)
+-   Continue with your code (or from `R/solution1_1.R`) and add a menu to choose different operators (e.g., plus, minus, ...)
 
 -   For example, add a `selectInput(inputId, label, choices)`
 
@@ -327,14 +345,14 @@ flowchart LR
 ## Solution
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `R/solution2.R`
+`r fontawesome::fa("file")` `R/solution1_2.R`
 :::
 
 ```{r}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|12-16|29-36"
-#| file: "R/solution2.R"
+#| file: "R/solution1_2.R"
 ```
 
 ## Formatting text
@@ -351,6 +369,19 @@ In UI as static or dynamic elements:
 On the server:
 ```{r eval=FALSE}
 output$result <- renderText({ "<h2>Headline</h2>" })
+```
+
+## Solution
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `R/solution1_3.R`
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|12-16|29-36"
+#| file: "R/solution1_3.R"
 ```
 
 # Who doesn't like penguins?
@@ -374,7 +405,7 @@ knitr::kable(head(penguins))
 ## Reactive expression
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo2.R`
+`r fontawesome::fa("file")` `R/challenge2.R`
 :::
 
 ::: code-half
@@ -382,7 +413,7 @@ knitr::kable(head(penguins))
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|9|12-15|18-22|27-42|29-33|35-37|39-41"
-#| file: "demos/demo2.R"
+#| file: "R/challenge2.R"
 ```
 :::
 
@@ -406,7 +437,7 @@ flowchart LR
 
 ## Your Turn - Exercise 3
 
-Copy the code from the previous slide (or open `exercises/XXX.R`) and run it in R
+Copy the code from the previous slide (or open `R/challenge2.R`) and run it in R
 
 Add logic to create a second plot as output `plot2` on the server
 
@@ -416,11 +447,11 @@ Add extra features to make the diagrams interactive with additional inputs (e.g.
 
 ## DRY - Don't repeat yourself
 
-Assume a range input (`sliderInput(value=c(0,10))`) that filters data
+- Assume a range input (`sliderInput(value=c(0,10))`) that filters data
 
-Filter logic should be executed only once for every relevant output
+- Filter logic should be executed only once for every relevant output
 
-Never copy&paste server logic, instead use a `reactive` element (here: `compute`):
+- Never copy&paste server logic, instead use a `reactive` element (here: `compute`):
 
 ```{mermaid}
 flowchart LR
@@ -456,7 +487,7 @@ Their primary use is similar to a function in an R script, they help to
 ## DRY - Solution
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo2.R`
+`r fontawesome::fa("file")` `R/demo3.R`
 :::
 
 ::: code-half
@@ -464,7 +495,7 @@ Their primary use is similar to a function in an R script, they help to
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|"
-#| file: "demos/demo3.R"
+#| file: "R/demo3.R"
 ```
 :::
 
@@ -486,7 +517,7 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 ## Demo Dashboard
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo7.R`
+`r fontawesome::fa("file")` `R/demo7.R`
 :::
 
 ::: code-half
@@ -494,7 +525,7 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 #| eval: false
 #| echo: true
 #| code-line-numbers: "|"
-#| file: "demos/demo7.R"
+#| file: "R/demo7.R"
 ```
 :::
 
@@ -508,9 +539,9 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 
 ## Thanks
 
-To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop. This work is published from: Deutschland.
+To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop. This work is published from: Deutschland/Germany.
 
-Some materials are based on work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
+Some parts of this workshop are inspired by work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
 
 Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
 
