@@ -260,7 +260,7 @@ flowchart LR
 ## Seeking AI help
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="50%"}
 
 Large language models are great companions for programming
 
@@ -271,7 +271,7 @@ answer your questions (but please ask us as well any time)
 )
 
 :::
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ![](images/chatgpt-screenshot.png)
 :::
@@ -357,17 +357,19 @@ flowchart LR
 
 ## Formatting text
 
-We can use HTML elements to style text. E.g., <b>Bold</b> or <i>Italics</i>,<h1>First-level heading</h> <h2>Second-level heading</h2>, ...
-
+We can use HTML elements to style text. E.g., 
+```{r}
+cat("<b>Bold</b> or <i>Italics</i>,h1>First-level heading</h> <h2>Second-level heading</h2>, ...")
+```
 In UI as static or dynamic elements:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=TRUE}
     h2("Title"),
     htmlOutput(outputId = "result")
 ```
 
 On the server:
-```{r eval=FALSE}
+```{r eval=FALSE, echo=TRUE}
 output$result <- renderText({ "<h2>Headline</h2>" })
 ```
 
@@ -380,7 +382,7 @@ output$result <- renderText({ "<h2>Headline</h2>" })
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "|12-16|29-36"
+#| code-line-numbers: "|22|38"
 #| file: "R/solution1_3.R"
 ```
 
@@ -451,7 +453,9 @@ Add extra features to make the diagrams interactive with additional inputs (e.g.
 
 - Filter logic should be executed only once for every relevant output
 
-- Never copy&paste server logic, instead use a `reactive` element (here: `compute`):
+- Never copy&paste server logic, instead use a `reactive` element
+
+## DRY - Don't repeat yourself
 
 ```{mermaid}
 flowchart LR
@@ -539,7 +543,7 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 
 ## Thanks
 
-To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop. This work is published from: Deutschland/Germany.
+To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop document and the accompanying R source codes. This work is published from: Deutschland/Germany.
 
 Some parts of this workshop are inspired by work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
 
