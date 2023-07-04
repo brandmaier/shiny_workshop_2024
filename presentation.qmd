@@ -318,7 +318,7 @@ Check that you are able successfully run the shiny app and are able to interact 
 
 -   If everything is working try modifying the code (e.g. try adding a second number input and change the logic so that both numbers are added).
 
-<countdown time="300"/>
+<countdown time="600"/>
 
 ## Reactive diagram
 
@@ -346,7 +346,7 @@ flowchart LR
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "|4-22|12-13|18-19|25-30|27-29"
+#| code-line-numbers: "|12-15|28-30"
 #| file: "R/solution1_1.R"
 ```
 
@@ -357,6 +357,9 @@ flowchart LR
 -   For example, add a `selectInput(inputId, label, choices)`
 
 -   Add server-side logic to implement the different operators
+
+
+<countdown time="600"/>
 
 ## Reactive diagram
 
@@ -452,31 +455,14 @@ knitr::kable(head(penguins))
 ```
 :::
 
-## Reactive diagram
-
-```{mermaid}
-flowchart LR
-  subgraph outputs
-  pl1([plot1])
-  pl2([plot2])
-  tx1([text1])
-  end
-  subgraph inputs
-  slider1([slider1]) 
-  n1([number1]) 
-  rn1([range1])
-  ck1([ck1])
-  end
-
-```
 
 ## Your Turn - Exercise 3
 
-Copy the code from the previous slide (or open `R/challenge2.R`) and run it in R
+- Copy the code from the previous slide (or open `R/challenge2.R`) and run it in R
 
-Add logic to create a second plot as output `plot2` on the server
+- Add logic to create a second plot as output `plot2` on the server
 
-Add extra features to make the diagrams interactive with additional inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size adjustable by a given variable (`selectInput` or a `checkboxInput`).
+- Add extra inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size adjustable by a given variable (`selectInput` or a `checkboxInput`).
 
 <countdown time="1200"/>
 
@@ -497,7 +483,7 @@ flowchart LR
   pl2([plot2])
   tx1([text1])
   end
-  comp([compute])
+  compute([compute])
   subgraph inputs
   slider1([slider1]) 
   n1([number1]) 
@@ -566,6 +552,56 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 ```
 :::
 
+
+## Simulation
+
+Shiny is useful for simulating data (multivariate distributions, network graphs, agents, ...)
+
+- Inputs allow us to vary simulation parameters
+- Outputs display simulation results
+- We use a `reactive()` to generate our dataset, so that it can be reused in different places
+- `downloadButton` and `downloadHandler` allow us to download the simulated data files for later analyses
+
+## Simulation Stub
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `R/demo6.R`
+:::
+
+::: code-half
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|12-14|28-30|32-40|42-46"
+#| file: "R/demo6.R"
+```
+:::
+
+## Your Turn - Exercise 4
+
+Copy the code from the previous slide (or open `R/demo6.R`) and run it in R
+
+- Add logic to simulate data (e.g., using `rnorm` or `MASS::mvrnorm`)
+- Add a plot to show the simulation results (e.g., a scatterplot)
+- Add extra features to make the simulation interactive
+
+<countdown time="1000"/>
+
+## Simulation Solution
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `R/solution6.R`
+:::
+
+::: code-half
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|11-16|30-43|50|56"
+#| file: "R/solution6.R"
+```
+:::
+
 ## Inspiration
 
 ::: {.large style="text-align: center"}
@@ -574,11 +610,24 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 
 > The Shiny User Showcase is comprised of contributions from the Shiny app developer community.
 
-## Thanks
+
+## Your turn - go wild!
+
+
+![](images/undraw_electricity_k2ft.png)
+
+
+## License
 
 To the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop document and the accompanying R source codes. This work is published from: Deutschland/Germany.
 
 Some parts of this workshop are inspired by work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under [https://creativecommons.org/licenses/by/4.0/](Creative%20Commons%20Attribution%204.0%20International%20License).
+
+Illustrations by undraw https://undraw.co (see their license https://undraw.co/license)
+
+## Thanks
+
+Thank you for being on this journey with us!
 
 Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
 
