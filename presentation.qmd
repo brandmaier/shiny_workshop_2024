@@ -10,7 +10,7 @@ format:
     revealjs-plugins:
     - countdown
 editor: visual
-date: "July 2023"
+date: "05/07/2023"
 ---
 
 # Welcome
