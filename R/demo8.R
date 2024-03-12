@@ -5,7 +5,7 @@ library(tidygraph)
 
 
 
-# Define UI for application that draws a histogram
+# Define UI for application
 ui <- fluidPage(
 
     # Application title
@@ -20,10 +20,10 @@ ui <- fluidPage(
                         max = 50,
                         value = 30),
             
-            selectInput("style","Layout",c("dendrogram","stress"))
+            selectInput("style","Layout",c("dendrogram","stress","circlepack"))
         ),
 
-        # Show a plot of the generated distribution
+        # Show  outputs
         mainPanel(
            plotOutput("graphPlot",width = "600px"),
            textOutput("description")
@@ -31,22 +31,13 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+
 server <- function(input, output) {
 
-  graph <- reactive({
-    
-    set.seed(39548)
-    
-    play_erdos_renyi(n = 10, p = 0.2) %>% 
-      activate(nodes) %>% 
-      mutate(class = sample(letters[1:4], n(), replace = TRUE)) %>% 
-      activate(edges) %>% 
-      arrange(.N()$class[from]) %>%
-      mutate(class = sample(letters[1:2], n(), replace = TRUE))
-  })
+  # load data
+  graph <- as_tbl_graph(highschool)
   
-    output$graphPlot <- renderPlot({
+  output$graphPlot <- renderPlot({
        
       ggraph(graph(), layout = "dendrogram") + 
         geom_edge_link() + 
