@@ -5,15 +5,15 @@ author: Andreas M. Brandmaier and Leonie Hagitte
 format: 
   revealjs:
     theme: [simple, style.css] #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
-    footer: "6th ESLR Workshop, 2023: Social Learning in Complex Systems"
+    footer: "MSB Medical School Berlin"
     highlight-style: a11y
     revealjs-plugins:
     - countdown
 editor: visual
-date: "05/07/2023"
+date: "03/14/2024"
 ---
 
-# Welcome
+# Herzlich Wilkommen!
 
 ## Ask questions anytime
 
@@ -57,7 +57,7 @@ install.packages(c("shiny","tidyverse", "shinydashboard","palmerpenguins"))
 ::: {.column width="60%"}
 Please find the slides and code snippets here:
 
-[https://github.com/brandmaier/shiny-workshop-2023](https://github.com/brandmaier/shiny-workshop-2023)
+[https://github.com/brandmaier/shiny_workshop_2024](https://github.com/brandmaier/shiny_workshop_2024)
 
 :::
 
@@ -629,6 +629,6 @@ Illustrations by undraw https://undraw.co (see their license https://undraw.co/l
 
 Thank you for being on this journey with us!
 
-Andreas (find me on [Twitter](https://www.twitter.com/brandmaier "Twitter"))
+Andreas (https://www.brandmaier.de; also find me on [Twitter](https://www.twitter.com/brandmaier "Twitter")),
+Bluesky, Linkedin) 
 
-Leonie (find me on [LinkedIn](https://www.linkedin.com/in/leonie-hagitte-1130b8231/ "LinkedIn"))
