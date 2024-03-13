@@ -19,7 +19,6 @@ date: "03/14/2024"
 
 ![](images/undraw_Engineering_team_a7n2.png)
 
-
 ## Shiny
 
 > Shiny is an R package that makes it easy to build interactive web apps in R
@@ -28,9 +27,9 @@ date: "03/14/2024"
 ::: {.column width="60%"}
 Apps can be
 
-- standalone, 
-- deployed to a website, 
-- or be part of an interactive (Markdown) document
+-   standalone,
+-   deployed to a website,
+-   or be part of an interactive (Markdown) document
 :::
 
 ::: {.column width="40%"}
@@ -38,14 +37,23 @@ Apps can be
 :::
 :::
 
+## How do Shiny apps look like?
+
+Some examples:
+
+-   A word cloud: https://shiny.posit.co/r/gallery/start-simple/word-cloud/
+- Latent change score simulation: https://lcdlab.shinyapps.io/LCS-simulation-app/
+
 ## Required software
 
 You need to install these software packages in order to follow along with the examples of today:
 
 -   **R**: https://cran.r-project.org
 -   **RStudio**: https://posit.co/download/rstudio-desktop/
--   **shiny**
--   **tidyverse packages** (and some others)
+
+And a couple of R packages:
+
+-   **shiny, tidyverse packages, palmerpenguins, ...**
 
 ```{r eval=FALSE, echo=TRUE}
 install.packages(c("shiny","tidyverse", "shinydashboard","palmerpenguins"))
@@ -57,12 +65,10 @@ install.packages(c("shiny","tidyverse", "shinydashboard","palmerpenguins"))
 ::: {.column width="60%"}
 Please find the slides and code snippets here:
 
-[https://github.com/brandmaier/shiny_workshop_2024](https://github.com/brandmaier/shiny_workshop_2024)
-
+<https://github.com/brandmaier/shiny_workshop_2024>
 :::
 
 ::: {.column width="40%"}
-
 ![](images/qr-code.png)
 :::
 :::
@@ -71,7 +77,7 @@ Please find the slides and code snippets here:
 
 ::: columns
 ::: {.column width="60%"}
-::: {.r-fit-text}
+::: r-fit-text
 -   This is a hands-on workshop; you'll get the most out of it if you download the materials and actively participate
 -   Introductory R coding skills are OK! We have exercises at varying levels of proficiency
 -   The workshop materials remain open and accessible after the workshop
@@ -95,7 +101,7 @@ Please find the slides and code snippets here:
 
 -   Learn how to think in terms of *inputs* and *outputs*.
 
--   Write apps yourselves (using simulated data, real data or *your* data)
+-   Write your own apps (using simulated data, real data or *your* data)
 :::
 
 ## Content
@@ -123,7 +129,7 @@ shinyApp(
 
 ```
 
-We first load the `shiny` package and define a `shinyApp`, which really is only a function call with two arguments. 
+We first load the `shiny` package and define a `shinyApp`, which really is only a function call with two arguments.
 
 ## Anatomy of a Shiny app
 
@@ -294,18 +300,14 @@ flowchart LR
 
 ::: columns
 ::: {.column width="50%"}
-
 Large language models are great companions for programming
 
-Here is a ChatGPT link (requires Microsoft or Google account) to
-answer your questions (but please ask us as well any time)
+Here is a ChatGPT link (requires Microsoft or Google account) to answer your questions (but please ask us as well any time)
 
-[ChatGPT companion for Shiny](https://chat.openai.com/share/53d04b51-fae0-481a-8eca-02469a84de4d
-)
-
+[ChatGPT companion for Shiny](https://chat.openai.com/share/53d04b51-fae0-481a-8eca-02469a84de4d)
 :::
-::: {.column width="50%"}
 
+::: {.column width="50%"}
 ![](images/chatgpt-screenshot.png)
 :::
 :::
@@ -358,7 +360,6 @@ flowchart LR
 
 -   Add server-side logic to implement the different operators
 
-
 <countdown time="600"/>
 
 ## Reactive diagram
@@ -393,10 +394,12 @@ flowchart LR
 
 ## Formatting text
 
-We can use HTML elements to style text. E.g., 
+We can use HTML elements to style text. E.g.,
+
 ```{r}
 cat("<b>Bold</b> or <i>Italics</i>,h1>First-level heading</h> <h2>Second-level heading</h2>, ...")
 ```
+
 In UI as static or dynamic elements:
 
 ```{r eval=FALSE, echo=TRUE}
@@ -405,6 +408,7 @@ In UI as static or dynamic elements:
 ```
 
 On the server:
+
 ```{r eval=FALSE, echo=TRUE}
 output$result <- renderText({ "<h2>Headline</h2>" })
 ```
@@ -455,24 +459,23 @@ knitr::kable(head(penguins))
 ```
 :::
 
-
 ## Your Turn - Exercise 3
 
-- Copy the code from the previous slide (or open `R/challenge2.R`) and run it in R
+-   Copy the code from the previous slide (or open `R/challenge2.R`) and run it in R
 
-- Add logic to create a second plot as output `plot2` on the server
+-   Add logic to create a second plot as output `plot2` on the server
 
-- Add extra inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size adjustable by a given variable (`selectInput` or a `checkboxInput`).
+-   Add extra inputs (e.g., add a `selectInput` for subgroup selection of penguin species) or add a `rangeInput` to display only certain ranges of years, or make point size adjustable by a given variable (`selectInput` or a `checkboxInput`).
 
 <countdown time="1200"/>
 
 ## DRY - Don't repeat yourself
 
-- Assume a range input (`sliderInput(value=c(0,10))`) that filters data
+-   Assume a range input (`sliderInput(value=c(0,10))`) that filters data
 
-- Filter logic should be executed only once for every relevant output
+-   Filter logic should be executed only once for every relevant output
 
-- Never copy&paste server logic, instead use a `reactive` element
+-   Never copy&paste server logic, instead use a `reactive` element
 
 ## DRY - Don't repeat yourself
 
@@ -552,15 +555,14 @@ Package `shinydashboard` has some nice GUI elements for dashboards:
 ```
 :::
 
-
 ## Simulation
 
 Shiny is useful for simulating data (multivariate distributions, network graphs, agents, ...)
 
-- Inputs allow us to vary simulation parameters
-- Outputs display simulation results
-- We use a `reactive()` to generate our dataset, so that it can be reused in different places
-- `downloadButton` and `downloadHandler` allow us to download the simulated data files for later analyses
+-   Inputs allow us to vary simulation parameters
+-   Outputs display simulation results
+-   We use a `reactive()` to generate our dataset, so that it can be reused in different places
+-   `downloadButton` and `downloadHandler` allow us to download the simulated data files for later analyses
 
 ## Simulation Stub
 
@@ -581,9 +583,9 @@ Shiny is useful for simulating data (multivariate distributions, network graphs,
 
 Copy the code from the previous slide (or open `R/demo6.R`) and run it in R
 
-- Add logic to simulate data (e.g., using `rnorm` or `MASS::mvrnorm`)
-- Add a plot to show the simulation results (e.g., a scatterplot)
-- Add extra features to make the simulation interactive
+-   Add logic to simulate data (e.g., using `rnorm` or `MASS::mvrnorm`)
+-   Add a plot to show the simulation results (e.g., a scatterplot)
+-   Add extra features to make the simulation interactive
 
 <countdown time="1000"/>
 
@@ -610,12 +612,9 @@ Copy the code from the previous slide (or open `R/demo6.R`) and run it in R
 
 > The Shiny User Showcase is comprised of contributions from the Shiny app developer community.
 
-
 ## Your turn - go wild!
 
-
 ![](images/undraw_electricity_k2ft.png)
-
 
 ## License
 
@@ -629,6 +628,4 @@ Illustrations by undraw https://undraw.co (see their license https://undraw.co/l
 
 Thank you for being on this journey with us!
 
-Andreas (https://www.brandmaier.de; also find me on [Twitter](https://www.twitter.com/brandmaier "Twitter")),
-Bluesky, Linkedin) 
-
+Andreas (https://www.brandmaier.de; also find me on [Twitter](https://www.twitter.com/brandmaier "Twitter")), Bluesky, Linkedin)
