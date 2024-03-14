@@ -5,8 +5,11 @@ author: Andreas M. Brandmaier and Leonie Hagitte
 format: 
   revealjs:
     theme: [simple, style.css] #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
-    footer: "MSB Medical School Berlin"
+    footer: "Institute of Psychosocial Research for Health Promotion and Intervention (IHPI) - MSB Medical School Berlin"
     highlight-style: a11y
+    slide-number: true
+    preview-links: true
+    embed-resources: true
     revealjs-plugins:
     - countdown
 editor: visual
@@ -41,15 +44,15 @@ Apps can be
 
 Some examples:
 
--   A word cloud: https://shiny.posit.co/r/gallery/start-simple/word-cloud/
-- Latent change score simulation: https://lcdlab.shinyapps.io/LCS-simulation-app/
+-   A word cloud: [ ](https://shiny.posit.co/r/gallery/start-simple/word-cloud/)
+-   Latent change score simulation: [ ](https://lcdlab.shinyapps.io/LCS-simulation-app/)
 
 ## Required software
 
 You need to install these software packages in order to follow along with the examples of today:
 
--   **R**: https://cran.r-project.org
--   **RStudio**: https://posit.co/download/rstudio-desktop/
+-   **R**: <https://cran.r-project.org>
+-   **RStudio**: <https://posit.co/download/rstudio-desktop/>
 
 And a couple of R packages:
 
@@ -61,17 +64,9 @@ install.packages(c("shiny","tidyverse", "shinydashboard","palmerpenguins"))
 
 ## Workshop materials
 
-::: columns
-::: {.column width="60%"}
 Please find the slides and code snippets here:
 
-<https://github.com/brandmaier/shiny_workshop_2024>
-:::
-
-::: {.column width="40%"}
-![](images/qr-code.png)
-:::
-:::
+<https://github.com/brandmaier/shiny_workshop_2024> ![](images/qr-code.png){width="33%"}
 
 ## What to expect
 

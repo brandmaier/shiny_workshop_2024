@@ -1,0 +1,338 @@
+[
+  {
+    "objectID": "presentation.html#ask-questions-anytime",
+    "href": "presentation.html#ask-questions-anytime",
+    "title": "An Introduction to Shiny",
+    "section": "Ask questions anytime",
+    "text": "Ask questions anytime"
+  },
+  {
+    "objectID": "presentation.html#shiny",
+    "href": "presentation.html#shiny",
+    "title": "An Introduction to Shiny",
+    "section": "Shiny",
+    "text": "Shiny\n\nShiny is an R package that makes it easy to build interactive web apps in R\n\n\n\nApps can be\n\nstandalone,\ndeployed to a website,\nor be part of an interactive (Markdown) document"
+  },
+  {
+    "objectID": "presentation.html#how-do-shiny-apps-look-like",
+    "href": "presentation.html#how-do-shiny-apps-look-like",
+    "title": "An Introduction to Shiny",
+    "section": "How do Shiny apps look like?",
+    "text": "How do Shiny apps look like?\nSome examples:\n\nA word cloud: \nLatent change score simulation:"
+  },
+  {
+    "objectID": "presentation.html#required-software",
+    "href": "presentation.html#required-software",
+    "title": "An Introduction to Shiny",
+    "section": "Required software",
+    "text": "Required software\nYou need to install these software packages in order to follow along with the examples of today:\n\nR: https://cran.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\n\nAnd a couple of R packages:\n\nshiny, tidyverse packages, palmerpenguins, …\n\n\ninstall.packages(c(\"shiny\",\"tidyverse\", \"shinydashboard\",\"palmerpenguins\"))"
+  },
+  {
+    "objectID": "presentation.html#workshop-materials",
+    "href": "presentation.html#workshop-materials",
+    "title": "An Introduction to Shiny",
+    "section": "Workshop materials",
+    "text": "Workshop materials\n\n\nPlease find the slides and code snippets here:\nhttps://github.com/brandmaier/shiny_workshop_2024"
+  },
+  {
+    "objectID": "presentation.html#what-to-expect",
+    "href": "presentation.html#what-to-expect",
+    "title": "An Introduction to Shiny",
+    "section": "What to expect",
+    "text": "What to expect\n\n\n\n\nThis is a hands-on workshop; you’ll get the most out of it if you download the materials and actively participate\nIntroductory R coding skills are OK! We have exercises at varying levels of proficiency\nThe workshop materials remain open and accessible after the workshop\nFeel free to team up!"
+  },
+  {
+    "objectID": "presentation.html#objectives-of-today",
+    "href": "presentation.html#objectives-of-today",
+    "title": "An Introduction to Shiny",
+    "section": "Objectives of today",
+    "text": "Objectives of today\n\n\nLearn about the structure of a shiny application.\nLearn how to create shiny apps from a template.\nLearn how to think in terms of inputs and outputs.\nWrite your own apps (using simulated data, real data or your data)"
+  },
+  {
+    "objectID": "presentation.html#content",
+    "href": "presentation.html#content",
+    "title": "An Introduction to Shiny",
+    "section": "Content",
+    "text": "Content\nLet’s talk about…\n\n\nUser-interface / Layout\nReactivity / Logic\nAwesome visualizations"
+  },
+  {
+    "objectID": "presentation.html#anatomy-of-a-shiny-app",
+    "href": "presentation.html#anatomy-of-a-shiny-app",
+    "title": "An Introduction to Shiny",
+    "section": "Anatomy of a Shiny app",
+    "text": "Anatomy of a Shiny app\n\nlibrary(shiny)\n\nshinyApp(\n  ui = list(),\n  server = function(input, output, session) {  }\n)\n\nWe first load the shiny package and define a shinyApp, which really is only a function call with two arguments."
+  },
+  {
+    "objectID": "presentation.html#anatomy-of-a-shiny-app-1",
+    "href": "presentation.html#anatomy-of-a-shiny-app-1",
+    "title": "An Introduction to Shiny",
+    "section": "Anatomy of a Shiny app",
+    "text": "Anatomy of a Shiny app\n\nlibrary(shiny)\n\nshinyApp(\n  ui = list(),\n  server = function(input, output, session) {  }\n)\n\nThe ui specifies the visible user interface\n\nDynamic elements inputs and outputs\nStatic elements like headings, text, static images\nA layout how to arrange these things"
+  },
+  {
+    "objectID": "presentation.html#anatomy-of-a-shiny-app-2",
+    "href": "presentation.html#anatomy-of-a-shiny-app-2",
+    "title": "An Introduction to Shiny",
+    "section": "Anatomy of a Shiny app",
+    "text": "Anatomy of a Shiny app\n\nlibrary(shiny)\n\nshinyApp(\n  ui = list(),\n  server = function(input, output, session) {  }\n)\n\nThe server is invisible and is responsible for all computations\n\nThe server monitors inputs\nWhen inputs change, outputs are updated (reactivity)"
+  },
+  {
+    "objectID": "presentation.html#shiny-widgets-gallery",
+    "href": "presentation.html#shiny-widgets-gallery",
+    "title": "An Introduction to Shiny",
+    "section": "Shiny Widgets Gallery",
+    "text": "Shiny Widgets Gallery\n\nshiny.rstudio.com/gallery/widget-gallery.html"
+  },
+  {
+    "objectID": "presentation.html#example",
+    "href": "presentation.html#example",
+    "title": "An Introduction to Shiny",
+    "section": "Example",
+    "text": "Example\nInputs have unique ids that correspond to server-side variables, a label, a starting value and extra options (e.g., range restrictions, etc.)\ntextInput(inputId=\"familyname\", label=\"Family name:\",  value=\"Steve Miller\"  )\nor\nnumericInput(inputId=\"age\", label=\"Age (in years):\",  value=1, min=0, max=150 )\nOn the server, we will be able to access variables input$familyname and input$age"
+  },
+  {
+    "objectID": "presentation.html#sidebar-layout",
+    "href": "presentation.html#sidebar-layout",
+    "title": "An Introduction to Shiny",
+    "section": "Sidebar layout",
+    "text": "Sidebar layout\n\n\n\n\n\n\n\nFrom Mastering Shiny"
+  },
+  {
+    "objectID": "presentation.html#multi-row-layout",
+    "href": "presentation.html#multi-row-layout",
+    "title": "An Introduction to Shiny",
+    "section": "Multi-row layout",
+    "text": "Multi-row layout\n\n\n\n\n\n\n\nFrom Mastering Shiny"
+  },
+  {
+    "objectID": "presentation.html#other-layouts",
+    "href": "presentation.html#other-layouts",
+    "title": "An Introduction to Shiny",
+    "section": "Other layouts",
+    "text": "Other layouts\nMany more, e.g. Tabsets - see tabsetPanel()\n\n\n\n\n\n\n\nFrom Mastering Shiny"
+  },
+  {
+    "objectID": "presentation.html#outputs",
+    "href": "presentation.html#outputs",
+    "title": "An Introduction to Shiny",
+    "section": "Outputs",
+    "text": "Outputs\nExample output elements (placeholders for dynamic content):\n\ntextOutput() or htmlOutput()\nplotOutput()\ntableOutput()\n\nYou can use\n\nhelp.search(\"Output\", package = \"shiny\")\n\nto find other output functions in shiny."
+  },
+  {
+    "objectID": "presentation.html#outputs-and-renderers",
+    "href": "presentation.html#outputs-and-renderers",
+    "title": "An Introduction to Shiny",
+    "section": "Outputs and Renderers",
+    "text": "Outputs and Renderers\nEach *Output() function has a corresponding render*() server-side function. For example:\n\ntextOutput() \\(\\rightarrow\\) renderText()\nplotOutput() \\(\\rightarrow\\) renderPlot()\ntableOutput() \\(\\rightarrow\\) renderTable()"
+  },
+  {
+    "objectID": "presentation.html#server-logic-accessing-inputs",
+    "href": "presentation.html#server-logic-accessing-inputs",
+    "title": "An Introduction to Shiny",
+    "section": "Server logic: Accessing inputs",
+    "text": "Server logic: Accessing inputs\n\nshinyApp(\n  ui = list(),\n  server = function(input, output, session) {  }\n)\n\n\nInputs are accessed in the server function via the input argument.\nInputs are reactive, meaning that changes trigger updates to outputs."
+  },
+  {
+    "objectID": "presentation.html#demo-1---plus-one",
+    "href": "presentation.html#demo-1---plus-one",
+    "title": "An Introduction to Shiny",
+    "section": "Demo 1 - Plus One",
+    "text": "Demo 1 - Plus One\nDemo: We write a simple calculator that adds +1 to a number we enter.\nThe simplest structure of a reactive program involves just a source and an endpoint:\n\n\n\n\nflowchart LR\n  subgraph outputs\n  re([result])\n  end\n  subgraph inputs\n  n1([number]) \n  end\n  n1 --&gt; re"
+  },
+  {
+    "objectID": "presentation.html#demo-1---plus-one-1",
+    "href": "presentation.html#demo-1---plus-one-1",
+    "title": "An Introduction to Shiny",
+    "section": "Demo 1 - Plus One",
+    "text": "Demo 1 - Plus One\n\n R/demo1.R\n\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n  \n  # Application title\n  titlePanel(\"Calculator\"),\n  \n  # Sidebar with a slider input for number of bins \n  sidebarLayout(\n    sidebarPanel(\n      numericInput(\"number\",\n                   \"Number\", value=0)\n    ),\n    \n    # Show a plot of the generated distribution\n    mainPanel(\n      h3(\"Result\"),\n      textOutput(\"result\")\n    )\n  )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n  \n  output$result &lt;- renderText({\n    return(input$number + 1)\n  })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#seeking-ai-help",
+    "href": "presentation.html#seeking-ai-help",
+    "title": "An Introduction to Shiny",
+    "section": "Seeking AI help",
+    "text": "Seeking AI help\n\n\nLarge language models are great companions for programming\nHere is a ChatGPT link (requires Microsoft or Google account) to answer your questions (but please ask us as well any time)\nChatGPT companion for Shiny"
+  },
+  {
+    "objectID": "presentation.html#your-turn---exercise-1",
+    "href": "presentation.html#your-turn---exercise-1",
+    "title": "An Introduction to Shiny",
+    "section": "Your turn - Exercise 1",
+    "text": "Your turn - Exercise 1\nCopy the code from the previous slide (or open R/demo1.R) and run it in R\nCheck that you are able successfully run the shiny app and are able to interact with it.\n\nIf everything is working try modifying the code (e.g. try adding a second number input and change the logic so that both numbers are added)."
+  },
+  {
+    "objectID": "presentation.html#reactive-diagram",
+    "href": "presentation.html#reactive-diagram",
+    "title": "An Introduction to Shiny",
+    "section": "Reactive diagram",
+    "text": "Reactive diagram\nThe reactive diagram of this solution shows two inputs and one output:\n\n\n\n\nflowchart LR\n  subgraph outputs\n  re([result])\n  end\n  subgraph inputs\n  n1([number1]) \n  n2([number2]) \n  end\n  n1 --&gt; re\n  n2 --&gt; re"
+  },
+  {
+    "objectID": "presentation.html#solution",
+    "href": "presentation.html#solution",
+    "title": "An Introduction to Shiny",
+    "section": "Solution",
+    "text": "Solution\n\n R/solution1_1.R\n\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Calculator\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            numericInput(\"n1\",\n                        \"Number\", value=0),\n            numericInput(\"n2\",\n                         \"Number\", value=0)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           textOutput(\"result\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$result &lt;- renderText({\n        return(input$n1+input$n2)\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#your-turn---exercise-2",
+    "href": "presentation.html#your-turn---exercise-2",
+    "title": "An Introduction to Shiny",
+    "section": "Your Turn - Exercise 2",
+    "text": "Your Turn - Exercise 2\n\nContinue with your code (or from R/solution1_1.R) and add a menu to choose different operators (e.g., plus, minus, …)\nFor example, add a selectInput(inputId, label, choices)\nAdd server-side logic to implement the different operators"
+  },
+  {
+    "objectID": "presentation.html#reactive-diagram-1",
+    "href": "presentation.html#reactive-diagram-1",
+    "title": "An Introduction to Shiny",
+    "section": "Reactive diagram",
+    "text": "Reactive diagram\n\n\n\n\nflowchart LR\n  subgraph outputs\n  re([result])\n  end\n  subgraph inputs\n  n1([number1]) \n  n2([number2]) \n  op([operator])\n  end\n  n1 --&gt; re\n  n2 --&gt; re\n  op --&gt; re"
+  },
+  {
+    "objectID": "presentation.html#solution-1",
+    "href": "presentation.html#solution-1",
+    "title": "An Introduction to Shiny",
+    "section": "Solution",
+    "text": "Solution\n\n R/solution1_2.R\n\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Calculator\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            numericInput(\"n1\",\n                        \"Number\", value=0),\n            numericInput(\"n2\",\n                         \"Number\", value=0),\n            selectInput(\"operator\",\"Operator\",c(\"+\",\"-\",\"/\",\"*\"))\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           textOutput(\"result\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$result &lt;- renderText({\n       result &lt;- switch (input$operator,\n          \"+\" = input$n1+input$n2,\n          \"-\" = input$n1-input$n2,\n          \"/\" = input$n1/input$n2,\n          \"*\" = input$n1*input$n2\n        )\n        return(result)\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#formatting-text",
+    "href": "presentation.html#formatting-text",
+    "title": "An Introduction to Shiny",
+    "section": "Formatting text",
+    "text": "Formatting text\nWe can use HTML elements to style text. E.g.,\n\n\n&lt;b&gt;Bold&lt;/b&gt; or &lt;i&gt;Italics&lt;/i&gt;,h1&gt;First-level heading&lt;/h&gt; &lt;h2&gt;Second-level heading&lt;/h2&gt;, ...\n\n\nIn UI as static or dynamic elements:\n\n    h2(\"Title\"),\n    htmlOutput(outputId = \"result\")\n\nOn the server:\n\noutput$result &lt;- renderText({ \"&lt;h2&gt;Headline&lt;/h2&gt;\" })"
+  },
+  {
+    "objectID": "presentation.html#solution-2",
+    "href": "presentation.html#solution-2",
+    "title": "An Introduction to Shiny",
+    "section": "Solution",
+    "text": "Solution\n\n R/solution1_3.R\n\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Calculator\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            numericInput(\"n1\",\n                        \"Number\", value=0),\n            selectInput(\"operator\",\"Operator\",c(\"+\",\"-\",\"/\",\"*\")),\n            numericInput(\"n2\",\n                         \"Number\", value=0)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           shiny::h2(\"Result:\"),\n           htmlOutput(\"result\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$result &lt;- renderText({\n       result &lt;- switch (input$operator,\n          \"+\" = input$n1+input$n2,\n          \"-\" = input$n1-input$n2,\n          \"/\" = input$n1/input$n2,\n          \"*\" = input$n1*input$n2\n        )\n       \n       result &lt;- paste0(\"&lt;h2&gt;\",result,\"&lt;/h2&gt;\")\n       \n        return(result)\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#palmer-penguins",
+    "href": "presentation.html#palmer-penguins",
+    "title": "An Introduction to Shiny",
+    "section": "Palmer Penguins",
+    "text": "Palmer Penguins\nWe are going to use the penguins dataset from palmerpenguins\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007"
+  },
+  {
+    "objectID": "presentation.html#reactive-expression",
+    "href": "presentation.html#reactive-expression",
+    "title": "An Introduction to Shiny",
+    "section": "Reactive expression",
+    "text": "Reactive expression\n\n R/challenge2.R\n\n\n\nlibrary(shiny)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Penguins\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            # &lt;-------   here go input elements\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"plot1\"),\n           plotOutput(\"plot2\"),\n           textOutput(\"text1\")\n           # &lt;-------    add more outputs here if needed\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$plot1 &lt;- renderPlot({\n       penguins %&gt;% ggplot(aes(x=body_mass_g,y=bill_length_mm))+\n        geom_point()+\n        geom_smooth(method = \"lm\")\n    })\n    \n    output$plot2 &lt;- renderPlot({\n      # &lt;------ generate plot here (ggplot, or base R)\n    })\n    \n    output$text1 &lt;- renderText({\n      # &lt;------- generate some text here\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#your-turn---exercise-3",
+    "href": "presentation.html#your-turn---exercise-3",
+    "title": "An Introduction to Shiny",
+    "section": "Your Turn - Exercise 3",
+    "text": "Your Turn - Exercise 3\n\nCopy the code from the previous slide (or open R/challenge2.R) and run it in R\nAdd logic to create a second plot as output plot2 on the server\nAdd extra inputs (e.g., add a selectInput for subgroup selection of penguin species) or add a rangeInput to display only certain ranges of years, or make point size adjustable by a given variable (selectInput or a checkboxInput)."
+  },
+  {
+    "objectID": "presentation.html#dry---dont-repeat-yourself",
+    "href": "presentation.html#dry---dont-repeat-yourself",
+    "title": "An Introduction to Shiny",
+    "section": "DRY - Don’t repeat yourself",
+    "text": "DRY - Don’t repeat yourself\n\nAssume a range input (sliderInput(value=c(0,10))) that filters data\nFilter logic should be executed only once for every relevant output\nNever copy&paste server logic, instead use a reactive element"
+  },
+  {
+    "objectID": "presentation.html#dry---dont-repeat-yourself-1",
+    "href": "presentation.html#dry---dont-repeat-yourself-1",
+    "title": "An Introduction to Shiny",
+    "section": "DRY - Don’t repeat yourself",
+    "text": "DRY - Don’t repeat yourself\n\n\n\n\nflowchart LR\n  subgraph outputs\n  pl1([plot1])\n  pl2([plot2])\n  tx1([text1])\n  end\n  compute([compute])\n  subgraph inputs\n  slider1([slider1]) \n  n1([number1]) \n  rn1([range1])\n  ck1([ck1])\n  end\n  compute --&gt; pl1\n  compute --&gt; pl2\n  rn1 --&gt; compute\n  n1 --&gt; pl1"
+  },
+  {
+    "objectID": "presentation.html#reactives",
+    "href": "presentation.html#reactives",
+    "title": "An Introduction to Shiny",
+    "section": "Reactives",
+    "text": "Reactives\nTheir primary use is similar to a function in an R script, they help to\n\navoid repeating yourself\ndecompose complex computations into smaller / more modular steps\ncan improve computational efficiency by breaking up / simplifying reactive dependencies"
+  },
+  {
+    "objectID": "presentation.html#dry---solution",
+    "href": "presentation.html#dry---solution",
+    "title": "An Introduction to Shiny",
+    "section": "DRY - Solution",
+    "text": "DRY - Solution\n\n R/demo3.R\n\n\n\nlibrary(shiny)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Penguins\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            sliderInput(\"rng\", \"Range \",value=c(3000,5000),min=2700, max=6300),\n            selectInput(\"size\", label=\"Size\", choices=c(\"flipper_length_mm\",\"bill_length_mm\")),\n            checkboxInput(\"grp\",label=\"Subgroups\", value=TRUE)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"plot1\"),\n           plotOutput(\"plot2\"),\n           textOutput(\"text1\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    penguins_filtered &lt;- reactive({\n      penguins %&gt;% filter(body_mass_g &gt;= input$rng[1] & body_mass_g &lt;= input$rng[2])\n    })\n  \n    output$plot1 &lt;- renderPlot({\n      \n      wf &lt;- NULL\n      if (input$grp) {\n        wf &lt;- facet_wrap(~species)\n      }\n      \n       penguins_filtered() %&gt;% ggplot(aes(x=body_mass_g,y=bill_length_mm))+\n        geom_point(aes_string(size=input$size))+\n        geom_smooth(method = \"lm\")+\n        wf\n    })\n    \n    output$plot2 &lt;- renderPlot({\n      if (input$grp) {\n        penguins_filtered() %&gt;% ggplot(aes(x=flipper_length_mm,fill=species))+geom_histogram()\n      } else {\n        penguins_filtered() %&gt;% ggplot(aes(x=flipper_length_mm))+geom_histogram()\n      }\n\n    })\n    \n    output$text1 &lt;- renderText({\n      paste0(\"&lt;b&gt;There&lt;/b&gt; are \",nrow(penguins_filtered()), \" penguins in the data set\")\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#deployment",
+    "href": "presentation.html#deployment",
+    "title": "An Introduction to Shiny",
+    "section": "Deployment",
+    "text": "Deployment\n\nFree online deployment at https://www.shinyapps.io/ after registration\nFree account limited (e.g., 25h operating hours, 5 apps; more plans available)\nSharing your app for others to run it locally (e.g., via OSF)\nReproducibility! Make sure that everything is contained, no absolute file paths were used (see here package) and that all dependencies are loaded"
+  },
+  {
+    "objectID": "presentation.html#dashboards",
+    "href": "presentation.html#dashboards",
+    "title": "An Introduction to Shiny",
+    "section": "Dashboards",
+    "text": "Dashboards\nPackage shinydashboard has some nice GUI elements for dashboards:"
+  },
+  {
+    "objectID": "presentation.html#demo-dashboard",
+    "href": "presentation.html#demo-dashboard",
+    "title": "An Introduction to Shiny",
+    "section": "Demo Dashboard",
+    "text": "Demo Dashboard\n\n R/demo7.R\n\n\n\nlibrary(shinydashboard)\n\nui &lt;- dashboardPage(\n  dashboardHeader(title = \"Value boxes\"),\n  dashboardSidebar(),\n  dashboardBody(\n    fluidRow(\n      # A static valueBox\n      valueBox(20, \"New Orders\", icon = icon(\"credit-card\")),\n      \n      # Dynamic valueBox\n      valueBoxOutput(\"progressBox\"),\n      \n    ),\n    fluidRow(\n      # Clicking this will increment the progress amount\n      box(width = 4, actionButton(\"count\", \"Do some work\"))\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$progressBox &lt;- renderValueBox({\n    \n    if (input$count &lt; 10) {\n      ic &lt;- icon(\"thumbs-down\")\n      col &lt;- \"red\"\n    } else {\n      ic &lt;- icon(\"thumbs-up\") \n      col &lt;- \"green\"\n    }\n    \n    valueBox(\n      paste0(input$count, \"%\"), \"Progress\", icon = ic,\n      color = col\n    )\n  })\n  \n\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "presentation.html#simulation",
+    "href": "presentation.html#simulation",
+    "title": "An Introduction to Shiny",
+    "section": "Simulation",
+    "text": "Simulation\nShiny is useful for simulating data (multivariate distributions, network graphs, agents, …)\n\nInputs allow us to vary simulation parameters\nOutputs display simulation results\nWe use a reactive() to generate our dataset, so that it can be reused in different places\ndownloadButton and downloadHandler allow us to download the simulated data files for later analyses"
+  },
+  {
+    "objectID": "presentation.html#simulation-stub",
+    "href": "presentation.html#simulation-stub",
+    "title": "An Introduction to Shiny",
+    "section": "Simulation Stub",
+    "text": "Simulation Stub\n\n R/demo6.R\n\n\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Simulation\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            numericInput(\"N\",\n                        \"Sample Size\", value=100),\n            downloadButton(\"download\")\n            \n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"graph\")\n        )\n    )\n)\n\n# Define server logic \nserver &lt;- function(input, output) {\n\n  sim &lt;- reactive({\n   # &lt;----- create a simulated dataset here\n  })\n  \n  # return the dataset as file\n  output$download = downloadHandler(\n    filename = function() {\n      \"simulation.csv\"\n    },\n    content = function(file) {\n      readr::write_csv(sim(), file)\n    }\n  )\n  \n    output$graph &lt;- renderPlot({\n      \n      # &lt;------ do some plotting here\n      \n    })\n    \n    \n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#your-turn---exercise-4",
+    "href": "presentation.html#your-turn---exercise-4",
+    "title": "An Introduction to Shiny",
+    "section": "Your Turn - Exercise 4",
+    "text": "Your Turn - Exercise 4\nCopy the code from the previous slide (or open R/demo6.R) and run it in R\n\nAdd logic to simulate data (e.g., using rnorm or MASS::mvrnorm)\nAdd a plot to show the simulation results (e.g., a scatterplot)\nAdd extra features to make the simulation interactive"
+  },
+  {
+    "objectID": "presentation.html#simulation-solution",
+    "href": "presentation.html#simulation-solution",
+    "title": "An Introduction to Shiny",
+    "section": "Simulation Solution",
+    "text": "Simulation Solution\n\n R/solution6.R\n\n\n\nlibrary(shiny)\n\n# Define UI for application\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Simulation\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            numericInput(\"N\",\n                        \"Sample Size\", value=100),\n            numericInput(\"r\",\n                         \"Correlation\", value=0),\n            downloadButton(\"download\")\n            \n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"graph\")\n        )\n    )\n)\n\n# Define server logic \nserver &lt;- function(input, output) {\n\n  sim &lt;- reactive({\n    r = input$r\n    N = input$N\n    \n    df &lt;- MASS::mvrnorm(n=N, mu=c(0,0),\n                        Sigma=matrix(c(1,r,\n                                       r,1),\n                                     nrow=2))\n    \n    df &lt;- data.frame(df)\n    names(df) &lt;- c(\"x\",\"y\")\n    \n    return(df)\n  })\n  \n  output$download = downloadHandler(\n    filename = function() {\n      \"simulation.csv\"\n    },\n    content = function(file) {\n      readr::write_csv(sim(), file)\n    }\n  )\n  \n    output$graph &lt;- renderPlot({\n      \n       sim() %&gt;% ggplot(aes(x=x,y=y))+ geom_point()+geom_smooth(method = \"lm\")\n      \n    })\n    \n    \n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "presentation.html#inspiration",
+    "href": "presentation.html#inspiration",
+    "title": "An Introduction to Shiny",
+    "section": "Inspiration",
+    "text": "Inspiration\n\nshiny.rstudio.com/gallery/\n\n\nThe Shiny User Showcase is comprised of contributions from the Shiny app developer community."
+  },
+  {
+    "objectID": "presentation.html#your-turn---go-wild",
+    "href": "presentation.html#your-turn---go-wild",
+    "title": "An Introduction to Shiny",
+    "section": "Your turn - go wild!",
+    "text": "Your turn - go wild!"
+  },
+  {
+    "objectID": "presentation.html#license",
+    "href": "presentation.html#license",
+    "title": "An Introduction to Shiny",
+    "section": "License",
+    "text": "License\nTo the extent possible under law and unless otherwise noted, Andreas and Leonie have waived all copyright and related or neighboring rights to this workshop document and the accompanying R source codes. This work is published from: Deutschland/Germany.\nSome parts of this workshop are inspired by work by Colin Rundel (https://github.com/rstudio-conf-2022/get-started-shiny/), which is provided under https://creativecommons.org/licenses/by/4.0/.\nIllustrations by undraw https://undraw.co (see their license https://undraw.co/license)"
+  },
+  {
+    "objectID": "presentation.html#thanks",
+    "href": "presentation.html#thanks",
+    "title": "An Introduction to Shiny",
+    "section": "Thanks",
+    "text": "Thanks\nThank you for being on this journey with us!\nAndreas (https://www.brandmaier.de; also find me on Twitter), Bluesky, Linkedin)\n\n\nMSB Medical School Berlin"
+  }
+]
