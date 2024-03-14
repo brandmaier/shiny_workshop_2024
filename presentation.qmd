@@ -4,6 +4,8 @@ subtitle: "A hands-on workshop"
 author: Andreas M. Brandmaier and Leonie Hagitte
 format: 
   revealjs:
+    mermaid:
+      theme: neutral
     theme: [simple, style.css] #  “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or  “white”
     footer: "Institute of Psychosocial Research for Health Promotion and Intervention (IHPI) - MSB Medical School Berlin"
     highlight-style: a11y
@@ -44,8 +46,8 @@ Apps can be
 
 Some examples:
 
--   A word cloud: [ ](https://shiny.posit.co/r/gallery/start-simple/word-cloud/)
--   Latent change score simulation: [ ](https://lcdlab.shinyapps.io/LCS-simulation-app/)
+-   A word cloud: [https://shiny.posit.co/r/gallery/start-simple/word-cloud/](https://shiny.posit.co/r/gallery/start-simple/word-cloud/)
+-   Latent change score simulation: [https://lcdlab.shinyapps.io/LCS-simulation-app/](https://lcdlab.shinyapps.io/LCS-simulation-app/)
 
 ## Required software
 

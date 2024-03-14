@@ -18,7 +18,7 @@
     "href": "presentation.html#how-do-shiny-apps-look-like",
     "title": "An Introduction to Shiny",
     "section": "How do Shiny apps look like?",
-    "text": "How do Shiny apps look like?\nSome examples:\n\nA word cloud: \nLatent change score simulation:"
+    "text": "How do Shiny apps look like?\nSome examples:\n\nA word cloud: https://shiny.posit.co/r/gallery/start-simple/word-cloud/\nLatent change score simulation: https://lcdlab.shinyapps.io/LCS-simulation-app/"
   },
   {
     "objectID": "presentation.html#required-software",
