@@ -3,6 +3,10 @@ title: "An Introduction to Shiny"
 subtitle: "A hands-on workshop"
 author: Andreas M. Brandmaier and Leonie Hagitte
 format: 
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
   revealjs:
     mermaid:
       theme: neutral
@@ -46,8 +50,8 @@ Apps can be
 
 Some examples:
 
--   A word cloud: [https://shiny.posit.co/r/gallery/start-simple/word-cloud/](https://shiny.posit.co/r/gallery/start-simple/word-cloud/)
--   Latent change score simulation: [https://lcdlab.shinyapps.io/LCS-simulation-app/](https://lcdlab.shinyapps.io/LCS-simulation-app/)
+-   A word cloud: <https://shiny.posit.co/r/gallery/start-simple/word-cloud/>
+-   Latent change score simulation: <https://lcdlab.shinyapps.io/LCS-simulation-app/>
 
 ## Required software
 
